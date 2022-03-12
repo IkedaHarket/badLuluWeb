@@ -1,0 +1,22 @@
+.navMenu{
+    height: 50px;
+}
+.navMenu ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navMenu ul li{
+    margin: 0 25px;
+    cursor: pointer;
+    transition: .3s ease color;
+    font-size: 1.2rem;
+}
+.navMenu ul li:hover{
+    color: #BA68C8;
+}
+.navMenu ul li.active{
+    color: #BA68C8;
+}

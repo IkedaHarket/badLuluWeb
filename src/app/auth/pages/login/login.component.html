@@ -1,0 +1,53 @@
+<div class="login">
+  <div class="login__img">
+    <img src="../../../../assets/badlulu-icon.svg" alt="" />
+  </div>
+  <form class="form mt-5" [formGroup]="miForm" (ngSubmit)="login()">
+    <div class="login__input mb-4">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          placeholder="Correo"
+          formControlName="correo"
+          pInputText
+        />
+      </span>
+      <span
+        error-msg
+        mensaje="Correo no válido"
+        [valido]="tieneError('correo')"
+        class="form-text mt-2"
+      >
+      </span>
+    </div>
+    <div class="login__input">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-lock"></i>
+        <input
+          type="password"
+          autocomplete="true"
+          formControlName="password"
+          placeholder="Contraseña"
+          pInputText
+        />
+      </span>
+      <span
+        error-msg
+        mensaje="Contraseña no válida"
+        [valido]="tieneError('password')"
+        class="form-text mt-2"
+      >
+      </span>
+    </div>
+    <button
+      pButton
+      pRipple
+      type="submit"
+      label="Ingresar"
+      class="p-button-rounded mt-5"
+      [disabled]="miForm.invalid"
+    ></button>
+    <a routerLink="/auth/register" href="#" class="mt-3">Crear Cuenta</a>
+  </form>
+</div>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Fredoka', sans-serif;
+}
+.err-msg-hidden{
+    display:none;
+}
+a{
+    text-decoration: none;
+    transition: .3s ease color;
+}
+a:hover{
+    color: rgb(229, 113, 250);
+}
