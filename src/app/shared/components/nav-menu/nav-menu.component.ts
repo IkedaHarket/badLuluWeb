@@ -14,7 +14,7 @@ export class NavMenuComponent implements OnInit {
   ngOnInit(): void {
       this.pages = [
         {label:'Inicio',url:'inicio'},
-        {label:'Galeria',url:'gallery'},
+        {label:'Galeria',url:'/media'},
         {label:'Cuenta',url:'auth/login'},
       ]
   }

@@ -4,6 +4,7 @@ import { RippleModule }     from 'primeng/ripple';
 import { ButtonModule }     from 'primeng/button';
 import { ImageModule }      from 'primeng/image';
 import { InputTextModule }  from 'primeng/inputtext';
+import { InputMaskModule}   from 'primeng/inputmask';
 
 @NgModule({
   exports:[
@@ -11,6 +12,7 @@ import { InputTextModule }  from 'primeng/inputtext';
     RippleModule,
     ImageModule,
     InputTextModule,
+    InputMaskModule
   ]
 })
 export class PrimeNgModule { }

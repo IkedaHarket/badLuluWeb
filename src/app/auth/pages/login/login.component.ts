@@ -1,30 +1,29 @@
-import { Component, OnInit }                  from '@angular/core';
+import { Component }                  from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router }                             from '@angular/router';
 
 import   Swal                                 from 'sweetalert2';
 import { AuthService }                        from '../../services/auth.service';
+import { ValidatorService } from '../../validators/validator.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   miForm: FormGroup = this.fb.group({
-    correo    :['sebaaignacio111@gmail.com',[Validators.required,Validators.pattern(this.authService.emailPattern)] ],
-    password  :['123456',[Validators.required,Validators.minLength(6)]],
+    correo    :['',[Validators.required,Validators.pattern(this.validator.emailPattern)] ],
+    password  :['',[Validators.required,Validators.minLength(6)]],
   })
 
   constructor(
     private fb:FormBuilder,
     private router:Router,
-    private authService:AuthService
+    private authService:AuthService,
+    private validator:ValidatorService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   login(){
     const {correo,password} = this.miForm.value;
@@ -39,6 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   tieneError(campo:string):boolean{
-    return this.miForm.get(campo)?.invalid || false;
+    if(this.miForm.get(campo)?.errors && this.miForm.controls[campo]?.touched){
+      return this.miForm.get(campo)?.invalid || false;
+    }
+    return false
   }
 }

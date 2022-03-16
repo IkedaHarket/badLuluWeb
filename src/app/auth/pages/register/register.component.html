@@ -1,1 +1,125 @@
-<p>register works!</p>
+<div class="register">
+  <p class="text-4xl">Registrarse</p>
+  <form class="form" [formGroup]="miForm" (ngSubmit)="register()">
+    <div class="register__input mb-3">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          placeholder="Usuario"
+          formControlName="nombre"
+          pInputText
+        />
+      </span>
+      <span
+        error-msg
+        mensaje="El usuario debe tener mínimo 4 caracteres"
+        [valido]="tieneError('nombre')"
+        class="form-text mt-2"
+      >
+      </span>
+    </div>
+    <div class="register__input mb-3">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-at"></i>
+        <input
+          type="text"
+          placeholder="Correo"
+          formControlName="correo"
+          pInputText
+        />
+      </span>
+      <span
+        error-msg
+        mensaje="Correo no válido"
+        [valido]="tieneError('correo')"
+        class="form-text mt-2"
+      >
+      </span>
+    </div>
+    <div class="register__input mb-3">
+        <span class="p-float-label p-input-icon-left">
+          <i class="pi pi-phone"></i>
+          <input
+            type="text"
+            placeholder="Telefono"
+            formControlName="telefono"
+            pInputText
+          />
+        </span>
+        <span
+          error-msg
+          mensaje="Telefono no válido"
+          [valido]="tieneError('telefono')"
+          class="form-text mt-2"
+        >
+        </span>
+      </div>
+    <div class="register__input mb-3">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-lock"></i>
+        <input
+          type="password"
+          autocomplete="true"
+          formControlName="password"
+          placeholder="Contraseña"
+          pInputText
+        />
+      </span>
+      <span
+        error-msg
+        mensaje="La contraseña debe tener mínimo 6 caracteres"
+        [valido]="tieneError('password')"
+        class="form-text mt-2"
+      >
+      </span>
+    </div>
+    <div class="register__input mb-3">
+        <span class="p-float-label p-input-icon-left">
+          <i class="pi pi-lock"></i>
+          <input
+            type="password"
+            autocomplete="true"
+            formControlName="password2"
+            placeholder="Confirme Contraseña"
+            pInputText
+          />
+        </span>
+        <span
+          error-msg
+          mensaje="Las contraseñas no son iguales"
+          [valido]="tieneError('password2')"
+          class="form-text mt-2"
+        >
+        </span>
+      </div>
+      <div class="register__input">
+        <span class="p-float-label p-input-icon-left">
+          <i class="pi pi-shield"></i>
+          <input
+            type="number"
+            autocomplete="true"
+            formControlName="edad"
+            placeholder="Edad"
+            pInputText
+          />
+        </span>
+        <span
+          error-msg
+          mensaje="La edad minima es 18"
+          [valido]="tieneError('edad')"
+          class="form-text mt-2"
+        >
+        </span>
+      </div>
+    <button
+      pButton
+      pRipple
+      class="p-button-rounded mt-5"
+      type="submit"
+      label="Registrarse"
+      [disabled]="miForm.invalid"
+    ></button>
+    <a routerLink="/auth/login" href="#" class="mt-3">Ya tengo cuenta</a>
+  </form>
+</div>

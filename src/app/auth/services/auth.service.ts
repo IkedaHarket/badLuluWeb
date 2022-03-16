@@ -9,7 +9,6 @@ import { Usuario, AuthResponse } from '../interfaces/interface';
 })
 export class AuthService {
 
-  emailPattern           : string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
   private _baseUrl    : string = environment.API_URL;
   private _usuario   !: Usuario;
 
@@ -19,23 +18,23 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
   
-  // registro(name:string,email:string,password:string){
-  //   const url = `${this._baseUrl}/auth/new`;
-  //   return this.http.post<AuthResponse>(url,{ email,password,name })
-  //       .pipe(
-  //         tap( resp => {
-  //           if(resp.ok){
-  //             localStorage.setItem('token',resp.token!);
-  //             this._usuario = {
-  //               name : resp.name!,
-  //               uid  : resp.uid!
-  //             }
-  //           }
-  //         }),
-  //         map( resp => resp.ok),
-  //         catchError(err => of(err.error.msg))
-  //       )
-  // }
+  register(nombre:string,correo:string,password:string,telefono:string,edad:number){
+    const url = `${this._baseUrl}/auth/register`;
+    return this.http.post<AuthResponse>(url,{ correo,password,nombre,telefono,edad })
+        .pipe(
+          tap( resp => {
+            if(resp.ok){
+              localStorage.setItem('token',resp.token!);
+              this._usuario = {
+                nombre : resp.usuario.nombre!,
+                uid  : resp.usuario.uid!
+              }
+            }
+          }),
+          map( resp => resp.ok),
+          catchError(err =>  of(err.error.errors))
+        )
+  }
 
   login( correo:string, password:string ){
     const url = `${this._baseUrl}/auth/login`;
@@ -44,7 +43,6 @@ export class AuthService {
           tap( resp => {
             if(resp.ok){
               localStorage.setItem('token',resp.token!);
-              console.log(resp)
             }
           }),
           map( resp => resp.ok),

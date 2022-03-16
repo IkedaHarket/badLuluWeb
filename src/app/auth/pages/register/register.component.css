@@ -1,0 +1,30 @@
+.register{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+  -moz-appearance:textfield; 
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.register__input{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+@media screen and (max-width:600px){
+
+}
